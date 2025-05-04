@@ -27,6 +27,7 @@ class Main:
         pygame.time.set_timer(self.GAME_UPDATE, self.initial_speed)
 
     def run(self):
+        pygame.display.set_caption("Tetris")
         running = True
         while running:
             for event in pygame.event.get():
@@ -70,19 +71,18 @@ class Main:
                 return  # návrat do menu
 
     def draw(self):
-        self.screen.fill(Colors.lososova)
+        self.screen.fill(Colors.cerna)
 
         self.screen.blit(self.score_surface, (365, 20))
         self.screen.blit(self.next_surface, (375, 180))
         self.screen.blit(self.high_score_surface, (330, 470))
 
         # Hodnoty skóre
-        score_value = self.title_font.render(str(self.game.score), True, Colors.bila)
-        high_score_value = self.title_font.render(str(self.game.high_score), True, Colors.bila)
+        score_value = self.title_font.render(str(self.game.score), True, Colors.cerna)
+        high_score_value = self.title_font.render(str(self.game.high_score), True, Colors.cerna)
 
-        pygame.draw.rect(self.screen, Colors.svetla_modra, self.score_rect, 0, 30)
-        pygame.draw.rect(self.screen, Colors.svetla_modra, self.high_score_rect, 0, 30)
-        pygame.draw.rect(self.screen, Colors.svetla_modra, self.next_rect, 0, 100)
+        pygame.draw.rect(self.screen, Colors.bila, self.score_rect, 0, 30)
+        pygame.draw.rect(self.screen, Colors.bila, self.high_score_rect, 0, 30)
 
         self.screen.blit(score_value, score_value.get_rect(center=self.score_rect.center))
         self.screen.blit(high_score_value, high_score_value.get_rect(center=self.high_score_rect.center))

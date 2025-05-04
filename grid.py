@@ -50,13 +50,13 @@ class Grid:
 	# Vyčistí všechny plné řádky a posune ostatní dolů
 	def clear_full_rows(self):
 		completed = 0	# Počet vyčištěných řádků
-		for row in range(self.num_rows-1, 0, -1):	# Prochází odspodu nahoru
+		for row in range(self.num_rows-1, 0, -1):
 			if self.is_row_full(row):
 				self.clear_row(row)
 				completed += 1
 			elif completed > 0:
 				self.move_row_down(row, completed)
-		return completed	# Vrací počet vyčištěných řádků
+		return completed
 
 	# Resetuje celou mřížku do původního (prázdného) stavu
 	def reset(self):
@@ -68,7 +68,7 @@ class Grid:
 	def draw(self, screen):
 		for row in range(self.num_rows):
 			for column in range(self.num_cols):
-				cell_value = self.grid[row][column] # Hodnota buňky (0 = prázdná, 1–7 = blok)
+				cell_value = self.grid[row][column]
 				# Vytvoří obdélník pro danou buňku
 				cell_rect = pygame.Rect(column*self.cell_size + 11, row*self.cell_size + 11,
 				self.cell_size -1, self.cell_size -1)

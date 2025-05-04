@@ -6,18 +6,13 @@ from colors import Colors
 class TetrisMenu:
     def __init__(self):
         pygame.init()
-        self.screen = pygame.display.set_mode((500, 620))
-        pygame.display.set_caption("Tetris Menu")
+        self.screen = pygame.display.set_mode((500, 622))
 
         # Načtení pozadí
         self.background = pygame.image.load("image/MenuC.png")
-        self.background = pygame.transform.scale(self.background, (500, 620))
+        self.background = pygame.transform.scale(self.background, (500, 622))
 
         # Barvy a fonty
-        self.WHITE = (255, 255, 255)
-        self.RED = (255, 0, 0)
-        self.CYAN = (0, 255, 255)
-
         self.title_font = pygame.font.SysFont('arial', 50, bold=True)
         self.menu_font = pygame.font.SysFont('arial', 35)
 
@@ -26,6 +21,7 @@ class TetrisMenu:
 
     def draw_menu(self):
         self.screen.blit(self.background, (0, 0))
+        pygame.display.set_caption("Tetris Menu")
 
         # Titulek
         title = self.title_font.render("TETRIS", True, Colors.modra)
@@ -33,7 +29,7 @@ class TetrisMenu:
 
         # Možnosti menu
         for i, option in enumerate(self.options):
-            color = self.WHITE if i != self.selected else Colors.cervena
+            color = Colors.bila if i != self.selected else Colors.cervena
             text = self.menu_font.render(option, True, color)
             x = self.screen.get_width() // 2 - text.get_width() // 2
             y = 200 + i * 70
